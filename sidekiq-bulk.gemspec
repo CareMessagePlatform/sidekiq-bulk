@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name         = "sidekiq-bulk"
-  s.version      = "0.1.1"
-  s.authors      = ["Adam Prescott"]
-  s.email        = ["adam@aprescott.com"]
+  s.version      = "0.1.2"
+  s.authors      = ["Adam Prescott", "Daniel Naves de Carvalho"]
+  s.email        = ["adam@aprescott.com", "daniel@wearebrane.com"]
   s.homepage     = "https://github.com/aprescott/sidekiq-bulk"
   s.summary      = "Give your workers more to do!"
   s.description  = "Augments Sidekiq job classes with a push_bulk method for easier bulk pushing."
