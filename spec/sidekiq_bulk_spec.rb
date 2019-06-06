@@ -45,12 +45,12 @@ RSpec.describe SidekiqBulk do
       expect(FooJob).to have_enqueued_sidekiq_job("a thing")
     end
 
-    it "returns the enqueued job ids" do
+    it "returns nothing" do
       allow(Sidekiq::Client).to receive(:push_bulk).and_return(["jid-1", "jid-2", "jid-3"])
 
       job_ids = FooJob.public_send(method_name, [1, 2, 3])
 
-      expect(job_ids).to match_array(["jid-1", "jid-2", "jid-3"])
+      expect(job_ids).to be_nil
     end
   end
 
@@ -105,19 +105,19 @@ RSpec.describe SidekiqBulk do
       context "when the item count is 10,000" do
         let(:item_count) { 10_000 }
 
-        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(1).times }
+        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(10).times }
       end
 
       context "when the item count is 10,001" do
         let(:item_count) { 10_001 }
 
-        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(2).times }
+        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(11).times }
       end
 
       context "when the item count is 40,000" do
         let(:item_count) { 40_000 }
 
-        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(4).times }
+        specify { expect(Sidekiq::Client).to have_received(:push_bulk).exactly(40).times }
       end
     end
   end

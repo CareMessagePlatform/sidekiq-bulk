@@ -30,7 +30,7 @@ You can write:
 FooJob.push_bulk([1, 2, 3])
 ```
 
-By default, jobs are sent in batches of 10,000 as a trade-off. Pushing N jobs is not O(1).
+By default, jobs are sent in batches of 1,000 as a trade-off. Pushing N jobs is not O(1).
 
 ### Installing
 

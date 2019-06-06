@@ -15,6 +15,8 @@ module SidekiqBulk
     end
 
     Sidekiq::Client.push_bulk("class" => self, "args" => args)
+
+    nil # returns nothing
   end
 end
 
